@@ -1,5 +1,6 @@
 import org.example.Priority;
 import org.example.Task;
+import org.example.TaskManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -18,12 +19,12 @@ public class TaskManagerTest {
 
     @Test
     void testCreateTask() {
-        Task newTask = new Task("Title 1", "Description 1", "2023-08-31", Priority.MEDIUM);
 
-        taskManager.createTask(newTask);
-        Task retrievedTask = taskManager.getTaskById(newTask.getId());
+        Task expectedTask = new Task(1, "Title 1", "Description 1", "2023-08-31", Priority.MEDIUM);
+        taskManager.createTask(expectedTask.getTitle() , expectedTask.getDescription(), expectedTask.getDueDate(), expectedTask.getPriority());
+        Task retrievedTask = taskManager.getTaskById(1);
 
-        assertEquals(newTask, retrievedTask);
+        assertEquals(expectedTask, retrievedTask);
     }
 
     @Test
@@ -79,4 +80,6 @@ public class TaskManagerTest {
 
         assertEquals(Priority.HIGH, updatedTask.getPriority());
     }
+
+
 }
