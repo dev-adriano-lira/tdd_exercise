@@ -1,6 +1,6 @@
 package org.example;
 
-class NotaFiscal {
+public class NotaFiscal {
     private String nomeCliente;
     private double valorNota;
     private double valorImposto;
