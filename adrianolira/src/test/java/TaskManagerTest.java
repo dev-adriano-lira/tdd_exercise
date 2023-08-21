@@ -70,15 +70,12 @@ class TaskManagerTest {
 
     @Test
     void testSetTaskPriority() {
-        Task task = new Task("Task with Priority", "Description", "2023-08-25", Priority.MEDIUM);
-        taskManager.createTask(task);
+        Task task = new Task(1, "Task with Priority", "Description", "2023-08-25", Priority.MEDIUM);
+        taskManager.createTask(task.getId(), task.getTitle() , task.getDescription(), task.getDueDate(), task.getPriority());
 
-        taskManager.setTaskPriority(task.getId(), Priority.HIGH);
-
-        Task updatedTask = taskManager.getTaskById(task.getId());
+        Task updatedTask = taskManager.setTaskPriority(task.getId(), Priority.HIGH);
 
         assertEquals(Priority.HIGH, updatedTask.getPriority());
     }
-
 
 }
