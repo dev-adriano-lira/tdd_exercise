@@ -26,14 +26,14 @@ class TaskManagerTest {
 
         assertEquals(expectedTask, retrievedTask);
     }
-/*
+
     @Test
     void testUpdateTaskDetails() {
-        Task originalTask = new Task("Title 2", "Description 2", "2023-09-15", Priority.LOW);
-        taskManager.createTask(originalTask);
+        Task expectedTask = new Task(2, "Title 2", "Description 2", "2023-09-15", Priority.LOW);
+        taskManager.createTask(expectedTask.getId(), expectedTask.getTitle() , expectedTask.getDescription(), expectedTask.getDueDate(), expectedTask.getPriority());
 
-        Task updatedTask = new Task(originalTask.getId(), "Updated Title", "Updated Description", "2023-09-20", Priority.HIGH);
-        taskManager.updateTask(updatedTask);
+        Task updatedTask = new Task(expectedTask.getId(),  "Updated Title", "Updated Description", "2023-09-20", Priority.HIGH);
+        taskManager.updateTask(expectedTask.getId(), updatedTask.getTitle(), updatedTask.getDescription(), updatedTask.getDueDate(), updatedTask.getPriority());
 
         Task retrievedTask = taskManager.getTaskById(updatedTask.getId());
 
@@ -81,5 +81,5 @@ class TaskManagerTest {
         assertEquals(Priority.HIGH, updatedTask.getPriority());
     }
 
-*/
+
 }
