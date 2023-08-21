@@ -53,15 +53,15 @@ class TaskManagerTest {
 
     @Test
     void testListTasksOrderedByDueDateAndPriority() {
-        Task task1 = new Task("Task 1", "Description 1", "2023-08-31", Priority.MEDIUM);
-        Task task2 = new Task("Task 2", "Description 2", "2023-08-30", Priority.HIGH);
-        Task task3 = new Task("Task 3", "Description 3", "2023-08-31", Priority.LOW);
+        Task task1 = new Task(1, "Task 1", "Description 1", "2023-08-31", Priority.MEDIUM);
+        Task task2 = new Task(2, "Task 2", "Description 2", "2023-08-30", Priority.HIGH);
+        Task task3 = new Task(3, "Task 3", "Description 3", "2023-08-31", Priority.LOW);
 
-        taskManager.createTask(task1);
-        taskManager.createTask(task2);
-        taskManager.createTask(task3);
+        taskManager.createTask(task1.getId(), task1.getTitle() , task1.getDescription(), task1.getDueDate(), task1.getPriority());
+        taskManager.createTask(task2.getId(), task2.getTitle() , task2.getDescription(), task2.getDueDate(), task2.getPriority());
+        taskManager.createTask(task3.getId(), task3.getTitle() , task3.getDescription(), task3.getDueDate(), task3.getPriority());
 
-        List<Task> tasks = taskManager.listTasksOrderedByDueDateAndPriority();
+        List<Task> tasks = taskManager.getAllTasks();
 
         assertEquals(task2, tasks.get(0));
         assertEquals(task1, tasks.get(1));
