@@ -1,6 +1,10 @@
 package org.example;
 
 public class GeradorNotaFiscal {
+    public GeradorNotaFiscal(){
+
+    }
+
     public NotaFiscal gerarNotaFiscal(Fatura fatura) {
         double valorImposto = fatura.calcularImposto();
         NotaFiscal notaFiscal = new NotaFiscal(fatura.getNomeCliente(), fatura.getValorFatura(), valorImposto);
@@ -16,4 +20,5 @@ public class GeradorNotaFiscal {
 
         return notaFiscal;
     }
+
 }

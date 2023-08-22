@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Fatura {
     private String nomeCliente;
     private String enderecoCliente;
@@ -29,5 +31,18 @@ public class Fatura {
         } else {
             return valorFatura * 0.06;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Fatura fatura = (Fatura) o;
+        return Double.compare(fatura.valorFatura, valorFatura) == 0 && Objects.equals(nomeCliente, fatura.nomeCliente) && Objects.equals(enderecoCliente, fatura.enderecoCliente) && Objects.equals(tipoServico, fatura.tipoServico);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nomeCliente, enderecoCliente, tipoServico, valorFatura);
     }
 }
