@@ -1,11 +1,9 @@
 import org.example.*;
 import org.junit.jupiter.api.Test;
-import  org.mockito.Mockito.*;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+
 
 public class GeradorNotaFiscalTest {
 
