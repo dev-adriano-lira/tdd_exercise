@@ -11,18 +11,22 @@ public class Main {
         taskManager.createTask(3, "Go for a run", "Morning jog", "2023-08-22", Priority.LOW);
 
         System.out.println("All tasks:");
+        int tasksCount = 1;
         List<Task> allTasks = taskManager.getAllTasks();
-        for (int i = 0; i < allTasks.size(); i++) {
-            System.out.println("Task " + (i + 1) + ":\n" + allTasks.get(i));
+        for (Task task : allTasks) {
+            System.out.println("Task " + tasksCount + ":\n" + task);
+            tasksCount++;
         }
+        tasksCount = 1;
 
         taskManager.updateTask(1, "Finish project", "Complete coding", "2023-09-15", Priority.HIGH);
         taskManager.deleteTask(2);
 
         System.out.println("\nUpdated tasks:");
         allTasks = taskManager.getAllTasks();
-        for (int i = 0; i < allTasks.size(); i++) {
-            System.out.println("Task " + (i + 1) + ":\n" + allTasks.get(i));
+        for (Task task : allTasks) {
+            System.out.println("Task " + tasksCount + ":\n" + task);
+            tasksCount++;
         }
 
     }

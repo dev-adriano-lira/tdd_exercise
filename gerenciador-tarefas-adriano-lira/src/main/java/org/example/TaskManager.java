@@ -47,7 +47,9 @@ public class TaskManager {
 
     public Task setTaskPriority(int id, Priority priority) {
         Task task = getTaskById(id);
-        task.setPriority(priority);
+        if (task != null) {
+            task.setPriority(priority);
+        }
         return task;
     }
 }
