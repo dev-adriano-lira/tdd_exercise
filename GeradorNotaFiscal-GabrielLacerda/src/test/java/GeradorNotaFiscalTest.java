@@ -12,8 +12,8 @@ public class GeradorNotaFiscalTest {
         Fatura fatura = new Fatura("Cliente Consultoria", "Endereço Consultoria", "CONSULTORIA", 1000.0);
         NotaFiscal notaFiscalEsperada = new NotaFiscal("Cliente Consultoria", 1000.0, 250.0);
 
-        GeradorNotaFiscal gerador = new GeradorNotaFiscal();
-        NotaFiscal notaFiscalGerada = gerador.gerarNotaFiscal(fatura);
+        GeradorNotaFiscal geradorDao = new GeradorNotaFiscal();
+        NotaFiscal notaFiscalGerada = geradorDao.gerarNotaFiscal(fatura);
 
         assertEquals(notaFiscalEsperada, notaFiscalGerada);
     }
@@ -23,8 +23,8 @@ public class GeradorNotaFiscalTest {
         Fatura fatura = new Fatura("Cliente Treinamento", "Endereço Treinamento", "TREINAMENTO", 1500.0);
         NotaFiscal notaFiscalEsperada = new NotaFiscal("Cliente Treinamento", 1500.0, 225.0);
 
-        GeradorNotaFiscal gerador = new GeradorNotaFiscal();
-        NotaFiscal notaFiscalGerada = gerador.gerarNotaFiscal(fatura);
+        GeradorNotaFiscal geradorDao = new GeradorNotaFiscal();
+        NotaFiscal notaFiscalGerada = geradorDao.gerarNotaFiscal(fatura);
 
         assertEquals(notaFiscalEsperada, notaFiscalGerada);
     }
@@ -34,8 +34,8 @@ public class GeradorNotaFiscalTest {
         Fatura fatura = new Fatura("Cliente Outros", "Endereço Outros", "OUTROS", 500.0);
         NotaFiscal notaFiscalEsperada = new NotaFiscal("Cliente Outros", 500.0, 30.0);
 
-        GeradorNotaFiscal gerador = new GeradorNotaFiscal();
-        NotaFiscal notaFiscalGerada = gerador.gerarNotaFiscal(fatura);
+        GeradorNotaFiscal geradorDao = new GeradorNotaFiscal();
+        NotaFiscal notaFiscalGerada = geradorDao.gerarNotaFiscal(fatura);
 
         assertEquals(notaFiscalEsperada, notaFiscalGerada);
     }
