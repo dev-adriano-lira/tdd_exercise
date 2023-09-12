@@ -37,4 +37,8 @@ public class NotaFiscal {
     public int hashCode() {
         return Objects.hash(nomeCliente, valorNota, valorImposto);
     }
+
+    public int getTaxaImpostoPorcent() {
+        return (int) ((getValorImposto()/getValorNota())*100);
+    }
 }
