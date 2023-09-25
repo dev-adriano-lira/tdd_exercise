@@ -3,8 +3,10 @@ package junit5Tests;
 import org.example.Priority;
 import org.example.Task;
 import org.example.TaskManager;
+import org.example.exception.TaskException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,6 +14,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class LimitValueAnalysisTest {
     private TaskManager taskManager;
@@ -51,7 +54,6 @@ class LimitValueAnalysisTest {
         assertEquals(2, taskManager.getAllTasks().get(1).getId());
     }
 
-    /*
     @ParameterizedTest
     @MethodSource("provideTasksForOrderingByDateOverHighPriority")
     @DisplayName("Testa se as tasks são ordenadas por data")
@@ -60,9 +62,8 @@ class LimitValueAnalysisTest {
         taskManager.createTask(task2.getId(), task2.getTitle(), task2.getDescription(), task2.getDueDate(), task2.getPriority());
         assertEquals(1, taskManager.getAllTasks().get(0).getId());
         assertEquals(2, taskManager.getAllTasks().get(1).getId());
-    }*/
+    }
 
-    /* testes comentados para passar no coverage
     @Test
     @DisplayName("Testa se retorna exceção com data invalida e prioridade alta retorna erro")
     public void testInvalidDateOverHighPriorityReturnsError() {
@@ -79,7 +80,7 @@ class LimitValueAnalysisTest {
             taskManager.createTask(1, "Task 1", "Description", "", Priority.HIGH);
         });
         taskManager.createTask(2, "Task 2", "Description", "2023-09-09", Priority.LOW);
-    }*/
+    }
 
     static Stream<Arguments> provideTasksForOrderingByEarlierDate() {
         return Stream.of(

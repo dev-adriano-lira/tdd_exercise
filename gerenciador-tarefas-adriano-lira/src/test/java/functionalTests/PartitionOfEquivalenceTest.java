@@ -6,7 +6,7 @@ import org.example.TaskManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PartitionOfEquivalenceTest {
 
@@ -109,4 +109,10 @@ class PartitionOfEquivalenceTest {
             updatedTask.getDescription(), updatedTask.getDueDate(), updatedTask.getPriority());
     }
     */
+
+    @Test
+    void testGetTaskByIdWithNonexistentId() {
+        taskManager.createTask(1, "Title1", "Description1", "2023-09-15", Priority.MEDIUM);
+        assertNull(taskManager.getTaskById(2));
+    }
 }

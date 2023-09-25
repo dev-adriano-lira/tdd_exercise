@@ -5,6 +5,7 @@ import org.example.Task;
 import org.example.TaskManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,6 +13,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class PartitionOfEquivalenceTest {
 
@@ -63,7 +65,6 @@ class PartitionOfEquivalenceTest {
         assertEquals(updatedTask, retrievedTask);
     }
 
-
     @ParameterizedTest(name = "Teste de Deleção de Tarefa por ID")
     @MethodSource("provideTasksForDeletion")
     @DisplayName("Teste de Deleção de Tarefa por ID")
@@ -72,6 +73,14 @@ class PartitionOfEquivalenceTest {
                 expectedTask.getDueDate(), expectedTask.getPriority());
 
         taskManager.deleteTask(expectedTask.getId());
+        assertNull(taskManager.getTaskById(expectedTask.getId()));
+    }
+
+    @Test
+    @DisplayName("Verifica se é retornado null ao pesquisar por um id de task que não existe no sistema")
+    void testGetTaskByIdWithNonexistentId() {
+        assertNull(taskManager.getTaskById(1));
+        assertNull(taskManager.getTaskById(2));
     }
 
     static Stream<Arguments> provideTasksForAddition() {

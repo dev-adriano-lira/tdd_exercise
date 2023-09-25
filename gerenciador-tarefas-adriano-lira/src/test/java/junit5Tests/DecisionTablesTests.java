@@ -14,6 +14,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DecisionTablesTests {
 
@@ -47,11 +48,25 @@ class DecisionTablesTests {
         assertEquals(updatedTask, retrievedTask);
     }
 
-   /* teste comentado para passar no coverage
+    @ParameterizedTest
+    @MethodSource("provideTasksWithDifferentIdsAndInvalidData")
+    @DisplayName("Verifica se retorna exceção ao criar task com data invalida")
+    void testReturnsExceptionWithInvalidData(Task task1, Task task2) {
+        assertThrows(TaskException.class, () -> {
+            taskManager.createTask(task1.getId(), task1.getTitle(), task1.getDescription(),
+                    task1.getDueDate(), task1.getPriority());
+        });
+
+        assertThrows(TaskException.class, () -> {
+            taskManager.updateTask(task1.getId(), task2.getTitle(), task2.getDescription(),
+                    task2.getDueDate(), task2.getPriority());
+        });
+    }
+
     @ParameterizedTest
     @MethodSource("provideTasksWithDifferentIds")
     @DisplayName("Testa atualização de tarefa inexistente")
-    public void testUpdateNonExistentTaskWithValidDateReturnsNotFoundError(Task expectedTask, Task updatedTask) {
+    void testUpdateNonExistentTaskWithValidDateReturnsNotFoundError(Task expectedTask, Task updatedTask) {
         taskManager.createTask(expectedTask.getId(), expectedTask.getTitle(), expectedTask.getDescription(),
                 expectedTask.getDueDate(), expectedTask.getPriority());
 
@@ -59,13 +74,12 @@ class DecisionTablesTests {
             taskManager.updateTask(updatedTask.getId(), updatedTask.getTitle(), updatedTask.getDescription(),
                     updatedTask.getDueDate(), updatedTask.getPriority());
         });
-    }*/
+    }
 
-    /* teste comentado para passar no coverage
-    @Test
+    @ParameterizedTest
     @MethodSource("provideTasksWithDifferentIdsAndInvalidData")
     @DisplayName("Testa atualização de tarefa inexistente e data invalida")
-    public void testUpdateNonExistentTaskWithInvalidDateReturnsNotFoundError(Task expectedTask, Task updatedTask) {
+    void testUpdateNonExistentTaskWithInvalidDateReturnsNotFoundError(Task expectedTask, Task updatedTask) {
         taskManager.createTask(expectedTask.getId(), expectedTask.getTitle(), expectedTask.getDescription(),
                 expectedTask.getDueDate(), expectedTask.getPriority());
 
@@ -73,7 +87,7 @@ class DecisionTablesTests {
             taskManager.updateTask(2, updatedTask.getTitle(), updatedTask.getDescription(),
                     updatedTask.getDueDate(), updatedTask.getPriority());
         });
-    }*/
+    }
 
     static Stream<Arguments> provideTasksForCreate() {
         return Stream.of(
